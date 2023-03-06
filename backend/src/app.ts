@@ -5,11 +5,14 @@ import userRoutes from "./routes/users";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import session from "express-session";
+import cors from "cors";
 import env from "./util/validateEnv";
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 
 const app = express();
+
+app.use(cors({ origin: "http://localhost:5000", credentials: true }));
 
 app.use(morgan("dev"));
 
