@@ -3,7 +3,12 @@ import { Note } from "../models/note";
 import { User } from "../models/user";
 
 async function fetchData(input: RequestInfo, init?: RequestInit) {
-  const response = await fetch(input, init);
+  const response = await fetch(`http://localhost:5000${input}`, {
+    ...init,
+    credentials: "include",
+  });
+  // const response = await fetch(input, init);
+  // console.log(await response.json());
   if (response.ok) {
     return response;
   } else {
@@ -25,7 +30,9 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 }
 
 export async function getLoggedInUser(): Promise<User> {
-  const response = await fetchData("/api/users", { method: "GET" });
+  const response = await fetchData("/api/users", {
+    method: "GET",
+  });
   return response.json();
 }
 
