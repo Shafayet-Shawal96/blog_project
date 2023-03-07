@@ -12,7 +12,9 @@ import { requiresAuth } from "./middleware/auth";
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({ origin: "https://blog-frontend-eosin.vercel.app", credentials: true })
+);
 
 app.use(morgan("dev"));
 

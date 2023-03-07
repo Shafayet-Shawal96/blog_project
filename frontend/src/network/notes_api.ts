@@ -3,12 +3,10 @@ import { Note } from "../models/note";
 import { User } from "../models/user";
 
 async function fetchData(input: RequestInfo, init?: RequestInit) {
-  const response = await fetch(`http://localhost:5000${input}`, {
+  const response = await fetch(`https://blog-mern-one.vercel.app/${input}`, {
     ...init,
     credentials: "include",
   });
-  // const response = await fetch(input, init);
-  // console.log(await response.json());
   if (response.ok) {
     return response;
   } else {
