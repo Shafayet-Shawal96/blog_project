@@ -3,7 +3,7 @@ import { Note } from "../models/note";
 import { User } from "../models/user";
 
 async function fetchData(input: RequestInfo, init?: RequestInit) {
-  const response = await fetch(`https://blog-mern-one.vercel.app/${input}`, {
+  const response = await fetch(`https://blog-mern-one.vercel.app${input}`, {
     ...init,
     credentials: "include",
   });
