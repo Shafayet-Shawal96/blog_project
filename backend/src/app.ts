@@ -26,6 +26,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
+      domain: ".vercel.app",
       secure: true,
       maxAge: 60 * 60 * 1000,
       sameSite: "none",

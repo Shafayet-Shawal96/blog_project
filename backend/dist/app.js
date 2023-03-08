@@ -46,6 +46,7 @@ app.use((0, express_session_1.default)({
     resave: false,
     saveUninitialized: false,
     cookie: {
+        domain: ".vercel.app",
         secure: true,
         maxAge: 60 * 60 * 1000,
         sameSite: "none",
