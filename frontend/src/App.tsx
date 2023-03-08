@@ -22,6 +22,9 @@ function App() {
     async function fetchLoggedInUser() {
       try {
         const user = await NotesApi.getLoggedInUser();
+        document.cookie = `userId=${user._id};expires=${new Date(
+          Date.now() + 60 * 60 * 1000
+        ).toUTCString()};path=/;`;
         setLoggedInUser(user);
       } catch (error) {
         console.error(error);

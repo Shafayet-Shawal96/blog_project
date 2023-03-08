@@ -7,8 +7,12 @@ exports.requiresAuth = void 0;
 const http_errors_1 = __importDefault(require("http-errors"));
 const requiresAuth = (req, res, next) => {
     console.log(req.session);
+    console.log(req.cookies);
     if (req.session.userId) {
         next();
+    }
+    else if (req.cookies.userId) {
+        req.session.userId = req.cookies.userId;
     }
     else {
         next((0, http_errors_1.default)(401, "User not authenticated"));
