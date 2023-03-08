@@ -25,6 +25,10 @@ const LoginModal = ({ onDismiss, onLoginSuccessful }: LoginModalProps) => {
   async function onSubmit(credentials: LoginCredentials) {
     try {
       const user = await NotesApi.login(credentials);
+      document.cookie = `userId=${user._id};expires=${new Date(
+        Date.now() + 60 * 60 * 1000
+      ).toUTCString()};path=/;`;
+      console.log(document.cookie);
       onLoginSuccessful(user);
     } catch (error) {
       if (error instanceof UnauthorizedError) {

@@ -25,6 +25,10 @@ const SignUpModal = ({ onDismiss, onSignUpSuccessful }: SignUpModalProps) => {
   async function onSubmit(credentials: SignUpCredentials) {
     try {
       const newUser = await NotesApi.signUp(credentials);
+      document.cookie = `userId=${newUser._id};expires=${new Date(
+        Date.now() + 60 * 60 * 1000
+      ).toUTCString()};path=/;`;
+      console.log(document.cookie);
       onSignUpSuccessful(newUser);
     } catch (error) {
       if (error instanceof ConflictError) {

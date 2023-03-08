@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.requiresAuth = void 0;
 const http_errors_1 = __importDefault(require("http-errors"));
 const requiresAuth = (req, res, next) => {
-    console.log(req.session);
-    console.log(req.cookies);
+    console.log(`Check session ${req.session}`);
+    console.log(`Check cookies ${req.cookies}`);
     if (req.session.userId) {
         next();
     }
